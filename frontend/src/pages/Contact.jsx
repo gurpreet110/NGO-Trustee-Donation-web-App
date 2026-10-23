@@ -84,8 +84,8 @@ export default function Contact() {
         <div className="lg:col-span-2 space-y-4">
           {[
             { icon: Mail, label: "Email", value: "hello@givehope.org" },
-            { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
-            { icon: MapPin, label: "Address", value: "123 Impact Street, Portland, OR 97201" },
+            { icon: Phone, label: "Phone", value: "+110-(123)-(211)" },
+            { icon: MapPin, label: "Address", value: "123 Impact Street, Delhi, Indi" },
           ].map((item) => (
             <div
               key={item.label}
