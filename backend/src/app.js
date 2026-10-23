@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import dns from "node:dns";
 import mongoSanitize from "express-mongo-sanitize";
 import { clientOrigins, env } from "./config/env.js";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler.js";
@@ -9,6 +10,8 @@ import { globalLimiter } from "./middleware/rateLimiters.js";
 import apiRouter from "./routes/index.js";
 
 const app = express();
+
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 app.set("trust proxy", 1);
 app.disable("x-powered-by");

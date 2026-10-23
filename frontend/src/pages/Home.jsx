@@ -11,6 +11,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { campaignApi, donationApi } from "@/api";
+import { useAuth } from "@/hooks/useAuth";
 import { formatCurrency } from "@/utils";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import CampaignCard from "@/components/campaign/CampaignCard";
@@ -19,6 +20,7 @@ import ErrorState from "@/components/common/ErrorState";
 export default function Home() {
   useDocumentTitle("GiveHope — Donate to Verified Campaigns");
 
+  const { user } = useAuth();
   const [featured, setFeatured] = useState([]);
   const [stats, setStats] = useState({ totalRaised: 0, totalDonors: 0, totalCampaigns: 0 });
   const [loading, setLoading] = useState(true);
@@ -28,15 +30,24 @@ export default function Home() {
     setLoading(true);
     setError(null);
     try {
-      const [campaigns, allDonations] = await Promise.all([
-        campaignApi.getActive(),
-        donationApi.getAll(),
-      ]);
+      const campaigns = await campaignApi.getActive();
+      const totalRaised = campaigns.reduce((sum, campaign) => sum + Number(campaign.raised || 0), 0);
+
+      let totalDonors = 0;
+      const canLoadAdminStats = user?.role === "trustee" || user?.role === "admin";
+      if (canLoadAdminStats) {
+        try {
+          const allDonations = await donationApi.getAll();
+          totalDonors = new Set(allDonations.map((d) => d.userId)).size;
+        } catch {
+          totalDonors = 0;
+        }
+      }
+
       setFeatured(campaigns.slice(0, 3));
-      const totalRaised = allDonations.reduce((sum, d) => sum + d.amount, 0);
       setStats({
         totalRaised,
-        totalDonors: new Set(allDonations.map((d) => d.userId)).size,
+        totalDonors,
         totalCampaigns: campaigns.length,
       });
       setLoading(false);

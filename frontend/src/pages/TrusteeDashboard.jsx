@@ -32,9 +32,7 @@ export default function TrusteeDashboard() {
     setError(null);
     try {
       const [campaigns, donations] = await Promise.all([
-        role === ROLES.ADMIN
-          ? campaignApi.getAll()
-          : campaignApi.getByTrustee(user.id),
+        role === ROLES.ADMIN ? campaignApi.getAll() : campaignApi.getMine(),
         donationApi.getAll(),
       ]);
       setMyCampaigns(campaigns);

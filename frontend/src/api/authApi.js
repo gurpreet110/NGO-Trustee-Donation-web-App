@@ -1,30 +1,22 @@
-import { users, accounts } from "./mockData";
-import { delay } from "./delay";
+import api from "./axios";
 
 export const authApi = {
-  login: (email, password) => {
-    const account = accounts.find(
-      (a) => a.email === email && a.password === password
-    );
-    if (!account) return delay(null);
-    const user = users.find((u) => u.id === account.userId);
-    return delay(user);
+  login: async (email, password) => {
+    const normalizedEmail = String(email ?? "").trim().toLowerCase();
+    const normalizedPassword = String(password ?? "");
+
+    const { data } = await api.post("/auth/login", {
+      email: normalizedEmail,
+      password: normalizedPassword,
+    });
+    return data;
   },
-  register: ({ name, email, password }) => {
-    // Check if email already exists.
-    if (accounts.some((a) => a.email === email)) {
-      return delay(null);
-    }
-    const newUser = {
-      id: `u${Date.now()}`,
-      name,
-      email,
-      role: "donor",
-      joinedDate: new Date().toISOString().split("T")[0],
-      totalDonated: 0,
-    };
-    users.push(newUser);
-    accounts.push({ email, password, userId: newUser.id });
-    return delay(newUser);
+  register: async ({ name, email, password }) => {
+    const { data } = await api.post("/auth/register", {
+      name: String(name ?? "").trim(),
+      email: String(email ?? "").trim().toLowerCase(),
+      password: String(password ?? ""),
+    });
+    return data;
   },
 };

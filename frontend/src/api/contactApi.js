@@ -1,17 +1,12 @@
-import { contactMessages } from "./mockData";
-import { delay } from "./delay";
+import api from "./axios";
 
 export const contactApi = {
-  getAll: () => delay(contactMessages),
-  create: ({ name, email, message }) => {
-    const newMessage = {
-      id: `m${Date.now()}`,
-      name,
-      email,
-      message,
-      date: new Date().toISOString().split("T")[0],
-    };
-    contactMessages.push(newMessage);
-    return delay(newMessage);
+  getAll: async () => {
+    const { data } = await api.get("/contact");
+    return data;
+  },
+  create: async ({ name, email, message }) => {
+    const { data } = await api.post("/contact", { name, email, message });
+    return data;
   },
 };

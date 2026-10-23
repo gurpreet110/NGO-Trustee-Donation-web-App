@@ -1,29 +1,36 @@
-import { campaigns } from "./mockData";
-import { delay } from "./delay";
+import api from "./axios";
 
 export const campaignApi = {
-  getAll: () => delay(campaigns),
-  getActive: () => delay(campaigns.filter((c) => c.status === "active")),
-  getById: (id) => delay(campaigns.find((c) => c.id === id)),
-  getByTrustee: (trusteeId) =>
-    delay(campaigns.filter((c) => c.trusteeId === trusteeId)),
-  create: (data) => {
-    const newCampaign = {
-      id: `c${Date.now()}`,
-      raised: 0,
-      ...data,
-    };
-    campaigns.push(newCampaign);
-    return delay(newCampaign);
+  getAll: async () => {
+    const { data } = await api.get("/campaigns");
+    return data;
   },
-  update: (id, data) => {
-    const campaign = campaigns.find((c) => c.id === id);
-    if (campaign) Object.assign(campaign, data);
-    return delay(campaign);
+  getActive: async () => {
+    const { data } = await api.get("/campaigns?status=active");
+    return data;
   },
-  remove: (id) => {
-    const idx = campaigns.findIndex((c) => c.id === id);
-    if (idx !== -1) campaigns.splice(idx, 1);
-    return delay({ success: true });
+  getById: async (id) => {
+    const { data } = await api.get(`/campaigns/${id}`);
+    return data;
+  },
+  getMine: async () => {
+    const { data } = await api.get("/campaigns/mine");
+    return data;
+  },
+  getByTrustee: async () => {
+    const { data } = await api.get("/campaigns/mine");
+    return data;
+  },
+  create: async (data) => {
+    const { data: created } = await api.post("/campaigns", data);
+    return created;
+  },
+  update: async (id, data) => {
+    const { data: updated } = await api.put(`/campaigns/${id}`, data);
+    return updated;
+  },
+  remove: async (id) => {
+    const { data } = await api.delete(`/campaigns/${id}`);
+    return data;
   },
 };

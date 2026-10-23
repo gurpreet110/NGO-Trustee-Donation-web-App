@@ -1,7 +1,7 @@
 import { useState, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plus, Pencil, Trash2, FolderOpen } from "lucide-react";
-import { campaignApi } from "@/api";
+import { campaignApi, trusteeApi } from "@/api";
 import { useAuth } from "@/hooks/useAuth";
 import { ROLES, formatCurrency, formatDate } from "@/utils";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
@@ -34,9 +34,7 @@ export default function ManageCampaigns() {
     setError(null);
     try {
       const data =
-        role === ROLES.ADMIN
-          ? await campaignApi.getAll()
-          : await campaignApi.getByTrustee(user.id);
+        role === ROLES.ADMIN ? await campaignApi.getAll() : await campaignApi.getMine();
       setCampaigns(data);
       setLoading(false);
     } catch {
@@ -66,14 +64,23 @@ export default function ManageCampaigns() {
         await campaignApi.update(editing.id, values);
         toast("Campaign updated successfully.");
       } else {
-        await campaignApi.create({ ...values, trusteeId: user.id });
+        let payload = { ...values };
+        if (role === ROLES.ADMIN) {
+          const trustees = await trusteeApi.getAll();
+          const adminTrusteeId = trustees[0]?.id;
+          if (!adminTrusteeId) {
+            throw new Error("No trustee profiles are available to attach this campaign.");
+          }
+          payload = { ...payload, trusteeId: adminTrusteeId };
+        }
+        await campaignApi.create(payload);
         toast("Campaign created successfully.");
       }
       setModalOpen(false);
       setEditing(null);
       loadCampaigns();
-    } catch {
-      toast("Failed to save campaign.", "error");
+    } catch (error) {
+      toast(error?.message || "Failed to save campaign.", "error");
     } finally {
       setSubmitting(false);
     }

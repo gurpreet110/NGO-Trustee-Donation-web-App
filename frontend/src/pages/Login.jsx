@@ -30,13 +30,6 @@ export default function Login() {
     }
   };
 
-  // Quick-fill demo accounts.
-  const demos = [
-    { label: "Donor", email: "jane@example.com" },
-    { label: "Trustee", email: "amara@example.com" },
-    { label: "Admin", email: "admin@example.com" },
-  ];
-
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12 bg-gray-50">
       <div className="w-full max-w-md">
@@ -91,25 +84,8 @@ export default function Login() {
             </Button>
           </form>
 
-          {/* Demo accounts */}
-          <div className="mt-6 pt-5 border-t border-gray-100">
-            <p className="text-xs text-gray-400 mb-2 text-center">
-              Demo accounts (password: "password")
-            </p>
-            <div className="flex justify-center gap-2">
-              {demos.map((d) => (
-                <button
-                  key={d.email}
-                  onClick={() => {
-                    setEmail(d.email);
-                    setPassword("password");
-                  }}
-                  className="px-3 py-1.5 text-xs font-medium bg-gray-50 text-gray-600 rounded-lg hover:bg-teal-50 hover:text-teal-700 border border-gray-200 transition-colors"
-                >
-                  {d.label}
-                </button>
-              ))}
-            </div>
+          <div className="mt-6 pt-5 border-t border-gray-100 text-center text-xs text-gray-400">
+            Use an existing account created on the backend. The seeded password is set in backend/.env via SEED_PASSWORD.
           </div>
         </div>
 

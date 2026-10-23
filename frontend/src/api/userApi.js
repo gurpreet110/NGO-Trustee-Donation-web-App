@@ -1,12 +1,16 @@
-import { users } from "./mockData";
-import { delay } from "./delay";
+import api from "./axios";
 
 export const userApi = {
-  getAll: () => delay(users),
-  getById: (id) => delay(users.find((u) => u.id === id)),
-  updateRole: (userId, newRole) => {
-    const user = users.find((u) => u.id === userId);
-    if (user) user.role = newRole;
-    return delay(user);
+  getAll: async () => {
+    const { data } = await api.get("/users");
+    return data;
+  },
+  getById: async (id) => {
+    const { data } = await api.get(`/users/${id}`);
+    return data;
+  },
+  updateRole: async (userId, newRole) => {
+    const { data } = await api.patch(`/users/${userId}/role`, { role: newRole });
+    return data;
   },
 };
