@@ -1,0 +1,139 @@
+# NGO Trustee & Donation Web App
+
+A full-stack web application designed to support NGO fundraising activities by providing a platform for managing campaigns, handling donation-related workflows, and organizing trustee operations.
+
+## Overview
+
+The **NGO Trustee & Donation Web App** is built to streamline NGO campaign management and donation-related activities through a responsive user interface and a backend API. The project focuses on authentication, modular code organization, and maintainable application architecture.
+
+## Tech Stack
+
+**Frontend**
+- React.js
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+
+**Backend**
+- Node.js
+- Express.js
+
+**Database**
+- MongoDB
+
+**Other Tools**
+- Git & GitHub
+- REST API architecture
+
+## Key Features
+
+- **Campaign Management:** Interfaces for browsing campaigns and managing campaign-related information.
+- **Donation Management:** Donation-related workflows, donation history, and supporting UI components.
+- **User Authentication:** Authentication functionality with protected routes.
+- **Role-Based Access:** Route-level access control for different user roles.
+- **Trustee Dashboard:** Dedicated interface for trustee-related operations.
+- **Admin Panel:** Interface for administrative management.
+- **Responsive UI:** Component-based frontend designed for different screen sizes.
+- **Modular Architecture:** Reusable components, separate API modules, and organized application structure.
+
+## Project Structure
+
+```text
+NGO-Web-App/
+└── frontend/
+    ├── src/
+    │   ├── api/              # API service modules
+    │   ├── components/       # Reusable UI components
+    │   ├── context/          # Authentication context
+    │   ├── hooks/            # Custom React hooks
+    │   ├── pages/            # Application pages
+    │   ├── routes/           # Route configuration
+    │   ├── utils/            # Utility functions
+    │   ├── App.jsx
+    │   ├── index.css
+    │   └── main.jsx
+    ├── .env.example
+    ├── package.json
+    └── vite.config.js
+```
+
+> The repository currently documents the frontend structure. Add the backend directory and its structure here once the backend implementation is included in the repository.
+
+## Getting Started
+
+### Prerequisites
+
+Install the following before running the application:
+
+- Node.js and npm
+- Git
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/gurpreet110/NGO-Trustee-Donation-web-App.git
+```
+
+### 2. Navigate to the Frontend
+
+```bash
+cd NGO-Trustee-Donation-web-App/frontend
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Check the `.env.example` file and configure the required environment variables for your local setup.
+
+Do not commit actual credentials, API secrets, or private environment files to GitHub.
+
+### 5. Start the Development Server
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in the terminal, typically `http://localhost:5173`.
+
+## Application Architecture
+
+The frontend follows a modular React architecture:
+
+- **Pages** organize the application's main screens.
+- **Reusable components** provide consistent UI elements.
+- **API modules** separate HTTP requests from presentation logic.
+- **Authentication context and route guards** organize authentication state and access control.
+- **Utility functions** handle shared application logic.
+
+The intended full-stack architecture uses React for the client, Node.js and Express.js for backend APIs, and MongoDB for data persistence.
+
+## Future Enhancements
+
+- Complete backend integration and database operations.
+- Secure and thoroughly tested authentication and authorization.
+- Integration with a payment gateway for real donation processing.
+- Server-side payment verification and reliable donation records.
+- Improved validation, error handling, and automated testing.
+- Deployment of the frontend and backend.
+
+## Project Status
+
+**Under Development**
+
+The project is being developed as a full-stack NGO campaign and donation management platform.
+
+## Author
+
+**Gurpreet Singh**
+
+- GitHub: [@gurpreet110](https://github.com/gurpreet110)
+
+---
+
+Built to support organized, maintainable, and accessible NGO fundraising workflows.
