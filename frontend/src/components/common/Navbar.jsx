@@ -7,6 +7,7 @@ import {
   LogOut,
   LayoutDashboard,
   Users,
+  ShieldCheck,
   Receipt,
   FolderOpen,
   Inbox,
@@ -19,6 +20,7 @@ const publicLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/campaigns", label: "Campaigns" },
+  { to: "/donate", label: "Donate" },
   { to: "/trustees", label: "Trustees" },
   { to: "/contact", label: "Contact" },
 ];
@@ -51,7 +53,8 @@ export default function Navbar() {
     });
   }
   if (role === ROLES.ADMIN) {
-    roleLinks.push({ to: "/admin", label: "Admin Panel", icon: Users });
+    roleLinks.push({ to: "/manage-trustees", label: "Manage Trustees", icon: Users });
+    roleLinks.push({ to: "/admin", label: "Admin Panel", icon: ShieldCheck });
   }
 
   const handleLogout = () => {

@@ -40,6 +40,7 @@ export default function Footer() {
               {[
                 { to: "/about", label: "About Us" },
                 { to: "/campaigns", label: "Campaigns" },
+                { to: "/donate", label: "Donate" },
                 { to: "/trustees", label: "Our Trustees" },
                 { to: "/contact", label: "Contact" },
               ].map((l) => (

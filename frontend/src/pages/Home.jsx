@@ -100,10 +100,10 @@ export default function Home() {
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
-                to="/about"
+                to="/donate"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 backdrop-blur text-white font-semibold rounded-xl hover:bg-white/20 transition-colors border border-white/20"
               >
-                Learn About Us
+                Donate Now
               </Link>
             </div>
           </div>

@@ -10,10 +10,12 @@ import Trustees from "@/pages/Trustees";
 import Contact from "@/pages/Contact";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
+import Donate from "@/pages/Donate";
 import MyDonations from "@/pages/MyDonations";
 import TrusteeDashboard from "@/pages/TrusteeDashboard";
 import AdminPanel from "@/pages/AdminPanel";
 import ManageCampaigns from "@/pages/ManageCampaigns";
+import ManageTrustees from "@/pages/ManageTrustees";
 import ContactMessages from "@/pages/ContactMessages";
 import NotFound from "@/pages/NotFound";
 
@@ -29,6 +31,7 @@ export default function AppRoutes() {
       <Route path="/about" element={<About />} />
       <Route path="/campaigns" element={<Campaigns />} />
       <Route path="/campaigns/:id" element={<CampaignDetail />} />
+      <Route path="/donate" element={<Donate />} />
       <Route path="/trustees" element={<Trustees />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
@@ -58,6 +61,14 @@ export default function AppRoutes() {
         element={
           <RoleRoute allowedRoles={[ROLES.TRUSTEE, ROLES.ADMIN]}>
             <ManageCampaigns />
+          </RoleRoute>
+        }
+      />
+      <Route
+        path="/manage-trustees"
+        element={
+          <RoleRoute allowedRoles={[ROLES.ADMIN]}>
+            <ManageTrustees />
           </RoleRoute>
         }
       />

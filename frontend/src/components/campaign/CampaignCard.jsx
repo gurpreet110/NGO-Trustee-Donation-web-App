@@ -1,19 +1,24 @@
 import { Link } from "react-router-dom";
-import { Tag } from "lucide-react";
+import { Tag, HeartHandshake } from "lucide-react";
 import ProgressBar from "./ProgressBar";
 import { formatCurrency } from "@/utils";
 
 // Card showing a campaign summary for list views.
-export default function CampaignCard({ campaign }) {
+export default function CampaignCard({ campaign, onDonate }) {
   const { id, title, shortDescription, category, image, goal, raised, status } =
     campaign;
+
+  const handleDonateClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    onDonate?.(campaign);
+  };
 
   return (
     <Link
       to={`/campaigns/${id}`}
       className="group block bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
     >
-      {/* Image */}
       <div className="relative h-48 overflow-hidden bg-gray-100">
         <img
           src={image}
@@ -34,7 +39,6 @@ export default function CampaignCard({ campaign }) {
         </div>
       </div>
 
-      {/* Body */}
       <div className="p-5 space-y-4">
         <h3 className="font-bold text-base text-gray-900 group-hover:text-teal-700 transition-colors line-clamp-2">
           {title}
@@ -45,7 +49,7 @@ export default function CampaignCard({ campaign }) {
 
         <ProgressBar raised={raised} goal={goal} />
 
-        <div className="flex justify-between items-center pt-1">
+        <div className="flex justify-between items-center pt-1 gap-2">
           <div>
             <span className="block text-sm font-bold text-gray-900">
               {formatCurrency(raised)}
@@ -54,9 +58,21 @@ export default function CampaignCard({ campaign }) {
               of {formatCurrency(goal)} goal
             </span>
           </div>
-          <span className="text-sm font-semibold text-teal-600 group-hover:text-teal-700">
-            View &rarr;
-          </span>
+          <div className="flex items-center gap-2">
+            {onDonate && (
+              <button
+                type="button"
+                onClick={handleDonateClick}
+                className="inline-flex items-center gap-1 rounded-lg border border-teal-200 bg-teal-50 px-3 py-2 text-xs font-semibold text-teal-700 transition-colors hover:bg-teal-100"
+              >
+                <HeartHandshake className="w-3.5 h-3.5" />
+                Donate
+              </button>
+            )}
+            <span className="text-sm font-semibold text-teal-600 group-hover:text-teal-700">
+              View →
+            </span>
+          </div>
         </div>
       </div>
     </Link>
