@@ -84,11 +84,11 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-0.5 text-teal-500" />
-                <span>+1 (555) 123-4567</span>
+                <span>+110-(123)-(211)</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 text-teal-500" />
-                <span>123 Impact Street, Portland, OR 97201</span>
+                <span>123 Impact Street, Delhi, India</span>
               </li>
             </ul>
           </div>
