@@ -51,6 +51,18 @@ app.use(
 app.use(morgan(env.NODE_ENV === "production" ? "combined" : "dev"));
 app.use(globalLimiter);
 
+app.get("/", (req, res) => {
+  res.json({
+    status: "healthy",
+    message: "GiveHope NGO API is running",
+    endpoints: {
+      campaigns: "/api/campaigns",
+      trustees: "/api/trustees",
+      donationInquiries: "/api/donation-inquiries",
+    },
+  });
+});
+
 app.use("/api", apiRouter);
 app.use("/api", notFoundHandler);
 app.use(errorHandler);
