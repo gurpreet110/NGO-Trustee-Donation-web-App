@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
       {/* Stats bar */}
-      <section className="bg-white border-b border-gray-100">
+      <section className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
@@ -120,12 +120,12 @@ export default function Home() {
               { icon: Target, label: "Active Campaigns", value: stats.totalCampaigns },
             ].map((s) => (
               <div key={s.label} className="flex items-center gap-4">
-                <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-teal-50 text-teal-600 shrink-0">
+                <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 shrink-0 border border-teal-100/50 dark:border-teal-800/40">
                   <s.icon className="w-6 h-6" />
                 </span>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900">{s.value}</p>
-                  <p className="text-sm text-gray-500">{s.label}</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{s.value}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{s.label}</p>
                 </div>
               </div>
             ))}
@@ -137,16 +137,16 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
               Featured Campaigns
             </h2>
-            <p className="text-gray-500 mt-1">
+            <p className="text-gray-500 dark:text-gray-400 mt-1">
               Urgent causes that need your support today.
             </p>
           </div>
           <Link
             to="/campaigns"
-            className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-teal-600 hover:text-teal-700"
+            className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors"
           >
             View all <ArrowRight className="w-4 h-4" />
           </Link>
@@ -155,7 +155,7 @@ export default function Home() {
         {loading ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-gray-100 rounded-2xl h-80 animate-pulse" />
+              <div key={i} className="bg-gray-100 dark:bg-gray-800/60 rounded-2xl h-80 animate-pulse border border-transparent dark:border-gray-800" />
             ))}
           </div>
         ) : (
@@ -169,7 +169,7 @@ export default function Home() {
         <div className="sm:hidden mt-6">
           <Link
             to="/campaigns"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 dark:text-teal-400"
           >
             View all campaigns <ArrowRight className="w-4 h-4" />
           </Link>
@@ -177,13 +177,13 @@ export default function Home() {
       </section>
 
       {/* Value props */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-gray-50 dark:bg-gray-900/50 py-16 transition-colors border-y border-gray-100 dark:border-gray-800/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
               Why donors trust GiveHope
             </h2>
-            <p className="text-gray-500 mt-2 max-w-xl mx-auto">
+            <p className="text-gray-500 dark:text-gray-400 mt-2 max-w-xl mx-auto">
               We believe in transparency, accountability, and real impact.
             </p>
           </div>
@@ -195,13 +195,13 @@ export default function Home() {
             ].map((v) => (
               <div
                 key={v.title}
-                className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700/70 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
               >
-                <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-teal-50 text-teal-600 mb-4">
+                <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 mb-4 border border-teal-100/50 dark:border-teal-800/40">
                   <v.icon className="w-6 h-6" />
                 </span>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">{v.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{v.desc}</p>
+                <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{v.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -210,17 +210,17 @@ export default function Home() {
 
       {/* CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl px-6 py-12 sm:px-12 sm:py-16 text-center text-white">
+        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-800 dark:via-gray-900 dark:to-teal-950 rounded-3xl px-6 py-12 sm:px-12 sm:py-16 text-center text-white border border-gray-800 dark:border-gray-700 shadow-2xl">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             Ready to make a difference?
           </h2>
-          <p className="text-gray-300 max-w-xl mx-auto mb-8">
+          <p className="text-gray-300 dark:text-gray-300 max-w-xl mx-auto mb-8">
             Browse our active campaigns and find a cause that resonates with you.
             Every donation, no matter the size, brings us closer to our goals.
           </p>
           <Link
             to="/campaigns"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-500 transition-colors shadow-lg active:scale-[0.98]"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-teal-900/30 active:scale-[0.98]"
           >
             Browse Campaigns
             <ArrowRight className="w-5 h-5" />

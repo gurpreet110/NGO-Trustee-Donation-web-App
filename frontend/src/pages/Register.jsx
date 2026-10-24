@@ -34,20 +34,20 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12 bg-gray-50">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12 bg-gray-50 dark:bg-gray-900 transition-colors">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
-          <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-teal-600 text-white mb-3">
+          <span className="flex items-center justify-center w-14 h-14 rounded-2xl bg-teal-600 text-white mb-3 shadow-lg shadow-teal-900/20">
             <Heart className="w-7 h-7" />
           </span>
-          <h1 className="text-2xl font-bold text-gray-900">Create your account</h1>
-          <p className="text-sm text-gray-500 mt-1">Join GiveHope and start making an impact</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Create your account</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Join GiveHope and start making an impact</p>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 border border-gray-100 dark:border-gray-700/70 shadow-sm">
           {error && (
-            <div className="flex items-center gap-2 p-3 mb-4 bg-red-50 text-red-700 rounded-lg text-sm font-medium">
+            <div className="flex items-center gap-2 p-3 mb-4 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-red-700 dark:text-red-300 rounded-lg text-sm font-medium">
               <AlertCircle className="w-4 h-4 shrink-0" />
               {error}
             </div>
@@ -55,7 +55,7 @@ export default function Register() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-1.5 block">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5 block">
                 Full Name
               </label>
               <input
@@ -64,13 +64,13 @@ export default function Register() {
                 required
                 value={form.name}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all"
+                className="w-full px-4 py-2.5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-600 rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500"
                 placeholder="Jane Doe"
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-1.5 block">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5 block">
                 Email
               </label>
               <input
@@ -79,13 +79,13 @@ export default function Register() {
                 required
                 value={form.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all"
+                className="w-full px-4 py-2.5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-600 rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500"
                 placeholder="you@example.com"
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-1.5 block">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5 block">
                 Password
               </label>
               <input
@@ -95,7 +95,7 @@ export default function Register() {
                 minLength={6}
                 value={form.password}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all"
+                className="w-full px-4 py-2.5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-600 rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500"
                 placeholder="At least 6 characters"
               />
             </div>
@@ -106,9 +106,9 @@ export default function Register() {
           </form>
         </div>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
           Already have an account?{" "}
-          <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700">
+          <Link to="/login" className="font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300">
             Sign in
           </Link>
         </p>

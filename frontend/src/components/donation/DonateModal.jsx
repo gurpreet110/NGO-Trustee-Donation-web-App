@@ -96,11 +96,11 @@ export default function DonateModal({ campaign, open, onClose, onSuccess }) {
     >
       {success ? (
         <div className="text-center py-6">
-          <CheckCircle2 className="w-14 h-14 text-teal-600 mx-auto mb-4" />
-          <p className="text-lg font-semibold text-gray-900 mb-1">
+          <CheckCircle2 className="w-14 h-14 text-teal-600 dark:text-teal-400 mx-auto mb-4" />
+          <p className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
             Donation successful!
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             You donated {formatCurrency(Number(amount))} to this campaign.
           </p>
         </div>
@@ -108,7 +108,7 @@ export default function DonateModal({ campaign, open, onClose, onSuccess }) {
         <div className="space-y-5">
           {/* Preset amounts */}
           <div>
-            <label className="text-sm font-medium text-gray-700 mb-2 block">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 block">
               Choose an amount
             </label>
             <div className="grid grid-cols-4 gap-2">
@@ -120,7 +120,7 @@ export default function DonateModal({ campaign, open, onClose, onSuccess }) {
                     "py-2.5 rounded-lg text-sm font-semibold transition-colors",
                     Number(amount) === amt
                       ? "bg-teal-600 text-white"
-                      : "bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200",
+                      : "bg-gray-50 dark:bg-gray-700/60 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600",
                   ].join(" ")}
                 >
                   ₹{amt}
@@ -131,11 +131,11 @@ export default function DonateModal({ campaign, open, onClose, onSuccess }) {
 
           {/* Custom amount */}
           <div>
-            <label className="text-sm font-medium text-gray-700 mb-2 block">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 block">
               Or enter a custom amount
             </label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-400 font-medium">
                 ₹
               </span>
               <input
@@ -144,14 +144,14 @@ export default function DonateModal({ campaign, open, onClose, onSuccess }) {
                 step="0.01"
                 value={amount}
                 onChange={(e) => handleAmountChange(e.target.value)}
-                className="w-full pl-8 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all"
+                className="w-full pl-8 pr-4 py-2.5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-600 rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all"
               />
             </div>
           </div>
 
           {/* Inline error */}
           {error && (
-            <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 rounded-lg text-sm font-medium">
+            <div className="flex items-center gap-2 p-3 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-red-700 dark:text-red-300 rounded-lg text-sm font-medium">
               <AlertCircle className="w-4 h-4 shrink-0" />
               {error}
             </div>
@@ -168,7 +168,7 @@ export default function DonateModal({ campaign, open, onClose, onSuccess }) {
           </Button>
 
           {!isAuthenticated && (
-            <p className="text-xs text-gray-400 text-center">
+            <p className="text-xs text-gray-400 dark:text-gray-400 text-center">
               You'll be asked to sign in to confirm your donation.
             </p>
           )}

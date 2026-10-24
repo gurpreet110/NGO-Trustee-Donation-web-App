@@ -112,18 +112,18 @@ export default function CampaignDetail() {
           {/* Description */}
           <div className="lg:col-span-2 space-y-6">
             <div>
-              <h2 className="text-xl font-bold text-gray-900 mb-3">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                 About this campaign
               </h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                 {campaign.description}
               </p>
             </div>
 
             {/* Meta info */}
-            <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100">
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Calendar className="w-4 h-4 text-teal-600" />
+            <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <Calendar className="w-4 h-4 text-teal-600 dark:text-teal-400" />
                 Deadline: {formatDate(campaign.deadline)}
               </div>
             </div>
@@ -131,18 +131,18 @@ export default function CampaignDetail() {
 
           {/* Donation sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 lg:sticky lg:top-24">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700/70 shadow-sm p-6 lg:sticky lg:top-24">
               <div className="mb-4">
                 <div className="flex items-baseline justify-between mb-3">
                   <div>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">
                       {formatCurrency(campaign.raised)}
                     </p>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-400 dark:text-gray-400">
                       raised of {formatCurrency(campaign.goal)}
                     </p>
                   </div>
-                  <span className="text-2xl font-bold text-teal-600">
+                  <span className="text-2xl font-bold text-teal-600 dark:text-teal-400">
                     {formatPercent(campaign.raised, campaign.goal)}%
                   </span>
                 </div>
@@ -150,7 +150,7 @@ export default function CampaignDetail() {
               </div>
 
               {/* Mini stats */}
-              <div className="grid grid-cols-3 gap-2 py-4 border-y border-gray-100 mb-4">
+              <div className="grid grid-cols-3 gap-2 py-4 border-y border-gray-100 dark:border-gray-700/60 mb-4">
                 {[
                   { icon: TrendingUp, label: "Raised", value: formatCurrency(campaign.raised) },
                   { icon: Target, label: "Goal", value: formatCurrency(campaign.goal) },
@@ -158,7 +158,7 @@ export default function CampaignDetail() {
                 ].map((s) => (
                   <div key={s.label} className="text-center">
                     <s.icon className="w-4 h-4 mx-auto text-teal-500 mb-1" />
-                    <p className="text-sm font-bold text-gray-900">{s.value}</p>
+                    <p className="text-sm font-bold text-gray-900 dark:text-white">{s.value}</p>
                     <p className="text-[11px] text-gray-400">{s.label}</p>
                   </div>
                 ))}
@@ -171,7 +171,7 @@ export default function CampaignDetail() {
               >
                 Donate / Support Cause
               </Button>
-              <p className="text-xs text-gray-400 text-center mt-2">
+              <p className="text-xs text-gray-400 dark:text-gray-400 text-center mt-2">
                 Open dedicated donation inquiry form.
               </p>
             </div>

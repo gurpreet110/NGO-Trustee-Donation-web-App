@@ -63,17 +63,19 @@ export default function Contact() {
 
   const inputClass = (fieldName) =>
     [
-      "w-full px-4 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all",
-      errors[fieldName] ? "border-red-300 bg-red-50/30" : "border-gray-200",
+      "w-full px-4 py-2.5 border rounded-lg text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all",
+      errors[fieldName]
+        ? "border-red-300 dark:border-red-500/50 bg-red-50/30 dark:bg-red-950/20"
+        : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600",
     ].join(" ");
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">
           Get in Touch
         </h1>
-        <p className="text-gray-500 max-w-xl mx-auto">
+        <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
           Have a question, partnership idea, or want to learn more?
           We'd love to hear from you.
         </p>
@@ -85,18 +87,18 @@ export default function Contact() {
           {[
             { icon: Mail, label: "Email", value: "hello@givehope.org" },
             { icon: Phone, label: "Phone", value: "+110-(123)-(211)" },
-            { icon: MapPin, label: "Address", value: "123 Impact Street, Delhi, Indi" },
+            { icon: MapPin, label: "Address", value: "123 Impact Street, Delhi, India" },
           ].map((item) => (
             <div
               key={item.label}
-              className="flex items-start gap-4 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm"
+              className="flex items-start gap-4 bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-100 dark:border-gray-700/70 shadow-sm"
             >
-              <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-teal-50 text-teal-600 shrink-0">
+              <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 shrink-0 border border-teal-100/50 dark:border-teal-800/40">
                 <item.icon className="w-5 h-5" />
               </span>
               <div>
-                <p className="text-sm font-medium text-gray-400">{item.label}</p>
-                <p className="text-sm font-semibold text-gray-900">{item.value}</p>
+                <p className="text-sm font-medium text-gray-400 dark:text-gray-400">{item.label}</p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">{item.value}</p>
               </div>
             </div>
           ))}
@@ -106,17 +108,17 @@ export default function Contact() {
         <div className="lg:col-span-3">
           <form
             onSubmit={handleSubmit}
-            className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm space-y-5"
+            className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 border border-gray-100 dark:border-gray-700/70 shadow-sm space-y-5"
           >
             {submitted && (
-              <div className="flex items-center gap-2 p-4 bg-green-50 text-green-700 rounded-xl text-sm font-medium">
+              <div className="flex items-center gap-2 p-4 bg-green-50 dark:bg-green-950/40 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300 rounded-xl text-sm font-medium">
                 <CheckCircle2 className="w-5 h-5" />
                 Message sent! We'll get back to you soon.
               </div>
             )}
 
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-1.5 block">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5 block">
                 Name
               </label>
               <input
@@ -128,7 +130,7 @@ export default function Contact() {
                 placeholder="Your name"
               />
               {errors.name && (
-                <p className="flex items-center gap-1 mt-1 text-xs text-red-600">
+                <p className="flex items-center gap-1 mt-1 text-xs text-red-600 dark:text-red-400">
                   <AlertCircle className="w-3 h-3" />
                   {errors.name}
                 </p>
@@ -136,7 +138,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-1.5 block">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5 block">
                 Email
               </label>
               <input
@@ -148,7 +150,7 @@ export default function Contact() {
                 placeholder="you@example.com"
               />
               {errors.email && (
-                <p className="flex items-center gap-1 mt-1 text-xs text-red-600">
+                <p className="flex items-center gap-1 mt-1 text-xs text-red-600 dark:text-red-400">
                   <AlertCircle className="w-3 h-3" />
                   {errors.email}
                 </p>
@@ -156,7 +158,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-1.5 block">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5 block">
                 Message
               </label>
               <textarea
@@ -168,7 +170,7 @@ export default function Contact() {
                 placeholder="How can we help? (min 10 characters)"
               />
               {errors.message && (
-                <p className="flex items-center gap-1 mt-1 text-xs text-red-600">
+                <p className="flex items-center gap-1 mt-1 text-xs text-red-600 dark:text-red-400">
                   <AlertCircle className="w-3 h-3" />
                   {errors.message}
                 </p>

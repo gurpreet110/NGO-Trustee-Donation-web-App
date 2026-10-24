@@ -119,20 +119,20 @@ export default function CampaignCard({ campaign, onDonate }) {
   };
 
   return (
-    <article className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <article className="group flex flex-col bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl dark:shadow-black/40 border border-gray-100 dark:border-gray-800 hover:-translate-y-1 transition-all duration-300">
       {/* Cover Image & Status Badges */}
-      <div className="relative h-52 overflow-hidden bg-gray-100">
+      <div className="relative h-52 overflow-hidden bg-gray-100 dark:bg-gray-800">
         <img
           src={image}
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-          <span className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold bg-white/95 backdrop-blur-md text-teal-800 rounded-full shadow-sm">
-            <Tag className="w-3 h-3 text-teal-600" />
+          <span className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold bg-white/95 dark:bg-gray-900/95 backdrop-blur-md text-teal-800 dark:text-teal-300 rounded-full shadow-sm">
+            <Tag className="w-3 h-3 text-teal-600 dark:text-teal-400" />
             {category}
           </span>
           <span
@@ -159,35 +159,35 @@ export default function CampaignCard({ campaign, onDonate }) {
         <div>
           <Link
             to={`/campaigns/${id}`}
-            className="block font-bold text-lg text-gray-900 group-hover:text-teal-700 transition-colors line-clamp-2 leading-snug"
+            className="block font-bold text-lg text-gray-900 dark:text-white group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors line-clamp-2 leading-snug"
           >
             {title}
           </Link>
 
-          <p className="mt-2 text-sm text-gray-600 leading-relaxed line-clamp-2">
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2">
             {shortDescription || description}
           </p>
         </div>
 
         {/* Verified Impact Statistic Highlight */}
-        <div className="rounded-xl bg-teal-50/70 border border-teal-100/80 p-3 text-xs">
-          <div className="flex items-center gap-1.5 text-teal-800 font-semibold mb-1">
-            <Sparkles className="w-3.5 h-3.5 text-teal-600" />
+        <div className="rounded-xl bg-teal-50/70 dark:bg-teal-950/40 border border-teal-100/80 dark:border-teal-900/50 p-3 text-xs">
+          <div className="flex items-center gap-1.5 text-teal-800 dark:text-teal-300 font-semibold mb-1">
+            <Sparkles className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
             <span>Verified Impact — {impact.metric}</span>
           </div>
-          <p className="text-gray-700 font-medium leading-relaxed pl-5">
+          <p className="text-gray-700 dark:text-gray-300 font-medium leading-relaxed pl-5">
             {impact.value}
           </p>
         </div>
 
         {/* Campaign Donation Progress */}
-        <div className="space-y-2 pt-2 border-t border-gray-100">
+        <div className="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-800">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-semibold text-gray-700 flex items-center gap-1">
-              <TrendingUp className="w-3.5 h-3.5 text-teal-600" />
+            <span className="font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-1">
+              <TrendingUp className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
               Donation Progress
             </span>
-            <span className="font-bold text-teal-700">
+            <span className="font-bold text-teal-700 dark:text-teal-400">
               {progressPercent !== null ? `${progressPercent}% of target` : "Target N/A"}
             </span>
           </div>
@@ -196,27 +196,27 @@ export default function CampaignCard({ campaign, onDonate }) {
 
           <div className="flex items-baseline justify-between text-xs pt-1">
             <div>
-              <span className="font-bold text-sm text-gray-900">
+              <span className="font-bold text-sm text-gray-900 dark:text-white">
                 {formatCurrency(verifiedRaised)}
               </span>
-              <span className="text-gray-500 block text-[11px]">
+              <span className="text-gray-500 dark:text-gray-400 block text-[11px]">
                 verified donations
               </span>
             </div>
             <div className="text-right">
-              <span className="font-medium text-gray-600 block text-xs">
+              <span className="font-medium text-gray-600 dark:text-gray-300 block text-xs">
                 {hasValidGoal ? formatCurrency(goal) : "Open Target"}
               </span>
-              <span className="text-gray-400 text-[11px]">funding target</span>
+              <span className="text-gray-400 dark:text-gray-500 text-[11px]">funding target</span>
             </div>
           </div>
         </div>
 
         {/* Actions: Read More & Donate */}
-        <div className="pt-3 border-t border-gray-100 flex items-center justify-between gap-3">
+        <div className="pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between gap-3">
           <Link
             to={`/campaigns/${id}`}
-            className="inline-flex items-center gap-1 text-sm font-semibold text-gray-600 hover:text-teal-700 transition-colors py-2"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-teal-700 dark:hover:text-teal-400 transition-colors py-2"
           >
             Read More
             <ArrowRight className="w-4 h-4" />

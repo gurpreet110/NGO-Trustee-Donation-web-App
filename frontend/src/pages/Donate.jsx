@@ -269,18 +269,18 @@ export default function Donate() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50/60 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50/60 dark:bg-gray-950 py-12 px-4 sm:px-6 lg:px-8 transition-colors">
       <div className="max-w-4xl mx-auto">
         {/* Page Hero Header */}
         <div className="text-center mb-10">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold uppercase tracking-wider mb-4">
-            <HeartHandshake className="w-4 h-4 text-teal-600" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800 text-teal-800 dark:text-teal-300 text-xs font-semibold uppercase tracking-wider mb-4">
+            <HeartHandshake className="w-4 h-4 text-teal-600 dark:text-teal-400" />
             Transparent Philanthropy
           </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
             Support a Cause That Matters
           </h1>
-          <p className="mt-3 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-3 text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Your inquiry connects you directly with our trustee programs. Every rupee raised is deployed
             transparently to provide clean water, quality education, emergency relief, and community health.
           </p>
@@ -292,29 +292,29 @@ export default function Donate() {
           </div>
         ) : submitSuccess ? (
           /* Confirmation & Success Screen */
-          <div className="bg-white rounded-3xl border border-teal-100 shadow-xl p-8 sm:p-12 text-center animate-slide-up">
-            <div className="w-20 h-20 bg-teal-50 text-teal-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-inner">
+          <div className="bg-white dark:bg-gray-900 rounded-3xl border border-teal-100 dark:border-teal-900/60 shadow-xl p-8 sm:p-12 text-center animate-slide-up">
+            <div className="w-20 h-20 bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-inner">
               <CheckCircle2 className="w-10 h-10" />
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">
               Inquiry Received Successfully!
             </h2>
 
-            <div className="max-w-xl mx-auto bg-teal-50/60 rounded-2xl p-6 border border-teal-100 text-left text-sm space-y-3 mb-8">
-              <p className="text-teal-900 font-semibold text-base">
+            <div className="max-w-xl mx-auto bg-teal-50/60 dark:bg-teal-950/40 rounded-2xl p-6 border border-teal-100 dark:border-teal-800/60 text-left text-sm space-y-3 mb-8">
+              <p className="text-teal-900 dark:text-teal-200 font-semibold text-base">
                 {submitFeedback}
               </p>
-              <p className="text-gray-600 leading-relaxed">
-                Thank you, <span className="font-semibold text-gray-900">{lastSubmittedData?.name}</span>.
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                Thank you, <span className="font-semibold text-gray-900 dark:text-white">{lastSubmittedData?.name}</span>.
                 We have registered your interest in{" "}
-                <span className="font-semibold text-teal-800">{lastSubmittedData?.campaignTitle}</span> for{" "}
-                <span className="font-semibold text-gray-900">{lastSubmittedData?.donationInterest}</span>.
+                <span className="font-semibold text-teal-800 dark:text-teal-300">{lastSubmittedData?.campaignTitle}</span> for{" "}
+                <span className="font-semibold text-gray-900 dark:text-white">{lastSubmittedData?.donationInterest}</span>.
                 A confirmation summary has been directed to{" "}
-                <span className="font-semibold text-gray-900">{lastSubmittedData?.email}</span>.
+                <span className="font-semibold text-gray-900 dark:text-white">{lastSubmittedData?.email}</span>.
               </p>
-              <div className="pt-2 text-xs text-gray-500 flex items-center gap-1.5 border-t border-teal-100">
-                <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0" />
+              <div className="pt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5 border-t border-teal-100 dark:border-teal-850">
+                <ShieldCheck className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0" />
                 <span>Notice: No financial transaction has taken place. Our trustee team coordinates official tax-deductible contributions directly.</span>
               </div>
             </div>
@@ -329,7 +329,7 @@ export default function Donate() {
               </button>
               <Link
                 to="/campaigns"
-                className="w-full sm:w-auto px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold text-sm hover:bg-gray-50 transition-colors"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 font-semibold text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               >
                 Browse All Impact Campaigns
               </Link>
@@ -337,7 +337,7 @@ export default function Donate() {
           </div>
         ) : (
           /* Main Donation Inquiry Form Card */
-          <div className="bg-white rounded-3xl border border-gray-200/80 shadow-xl overflow-hidden">
+          <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200/80 dark:border-gray-800 shadow-xl overflow-hidden transition-colors">
             {/* Selected Campaign Spotlight Banner */}
             {currentCampaign ? (
               <div className="bg-gradient-to-r from-teal-900 to-teal-800 text-white p-6 sm:p-8">
@@ -409,11 +409,11 @@ export default function Donate() {
                 <div className="flex items-baseline justify-between mb-2">
                   <label
                     htmlFor={campaignSelectorId}
-                    className="block text-sm font-bold text-gray-900"
+                    className="block text-sm font-bold text-gray-900 dark:text-white"
                   >
                     Preferred Campaign <span className="text-red-500">*</span>
                   </label>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
                     Change campaign anytime
                   </span>
                 </div>
@@ -421,21 +421,21 @@ export default function Donate() {
                   id={campaignSelectorId}
                   value={selectedCampaignId}
                   onChange={(e) => handleCampaignChange(e.target.value)}
-                  className={`w-full px-4 py-3 bg-gray-50 border rounded-xl text-sm text-gray-800 font-medium focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all ${
-                    errors.campaignId ? "border-red-400 bg-red-50/50" : "border-gray-200"
+                  className={`w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border rounded-xl text-sm text-gray-800 dark:text-gray-100 font-medium focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all ${
+                    errors.campaignId ? "border-red-400 bg-red-50/50 dark:bg-red-950/20" : "border-gray-200 dark:border-gray-700"
                   }`}
                 >
-                  <option value="" disabled>
+                  <option value="" disabled className="dark:bg-gray-800">
                     -- Choose a cause or initiative --
                   </option>
                   {campaigns.map((c) => (
-                    <option key={c.id} value={c.id}>
+                    <option key={c.id} value={c.id} className="dark:bg-gray-800">
                       {c.title} ({c.category}) — Goal: {formatCurrency(c.goal)}
                     </option>
                   ))}
                 </select>
                 {errors.campaignId && (
-                  <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1 font-medium">
+                  <p className="mt-1.5 text-xs text-red-600 dark:text-red-400 flex items-center gap-1 font-medium">
                     <AlertCircle className="w-3.5 h-3.5" />
                     {errors.campaignId}
                   </p>
@@ -443,10 +443,10 @@ export default function Donate() {
               </div>
 
               {/* Section 1: Personal Information */}
-              <div className="pt-4 border-t border-gray-100">
+              <div className="pt-4 border-t border-gray-100 dark:border-gray-800">
                 <div className="flex items-center gap-2 mb-4">
-                  <User className="w-4 h-4 text-teal-600" />
-                  <h3 className="text-base font-bold text-gray-900">
+                  <User className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                  <h3 className="text-base font-bold text-gray-900 dark:text-white">
                     1. Personal Information
                   </h3>
                 </div>
@@ -456,7 +456,7 @@ export default function Donate() {
                   <div>
                     <label
                       htmlFor={nameId}
-                      className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5"
+                      className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1.5"
                     >
                       Full Name <span className="text-red-500">*</span>
                     </label>
@@ -471,13 +471,13 @@ export default function Donate() {
                           if (errors.fullName) setErrors((p) => ({ ...p, fullName: null }));
                         }}
                         placeholder="e.g. Priya Sharma"
-                        className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all ${
-                          errors.fullName ? "border-red-400 bg-red-50/50" : "border-gray-200"
+                        className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-800 border rounded-xl text-sm text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all ${
+                          errors.fullName ? "border-red-400 bg-red-50/50 dark:bg-red-950/20" : "border-gray-200 dark:border-gray-700"
                         }`}
                       />
                     </div>
                     {errors.fullName && (
-                      <p className="mt-1 text-xs text-red-600 flex items-center gap-1 font-medium">
+                      <p className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1 font-medium">
                         <AlertCircle className="w-3 h-3" />
                         {errors.fullName}
                       </p>
@@ -488,7 +488,7 @@ export default function Donate() {
                   <div>
                     <label
                       htmlFor={emailId}
-                      className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5"
+                      className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1.5"
                     >
                       Email Address <span className="text-red-500">*</span>
                     </label>
@@ -503,13 +503,13 @@ export default function Donate() {
                           if (errors.email) setErrors((p) => ({ ...p, email: null }));
                         }}
                         placeholder="e.g. priya@example.com"
-                        className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all ${
-                          errors.email ? "border-red-400 bg-red-50/50" : "border-gray-200"
+                        className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-800 border rounded-xl text-sm text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all ${
+                          errors.email ? "border-red-400 bg-red-50/50 dark:bg-red-950/20" : "border-gray-200 dark:border-gray-700"
                         }`}
                       />
                     </div>
                     {errors.email && (
-                      <p className="mt-1 text-xs text-red-600 flex items-center gap-1 font-medium">
+                      <p className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1 font-medium">
                         <AlertCircle className="w-3 h-3" />
                         {errors.email}
                       </p>
@@ -521,11 +521,11 @@ export default function Donate() {
                     <div className="flex justify-between items-baseline mb-1.5">
                       <label
                         htmlFor={phoneId}
-                        className="block text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                        className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider"
                       >
                         Phone Number
                       </label>
-                      <span className="text-[11px] text-gray-400">Optional</span>
+                      <span className="text-[11px] text-gray-400 dark:text-gray-500">Optional</span>
                     </div>
                     <div className="relative">
                       <Phone className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -538,13 +538,13 @@ export default function Donate() {
                           if (errors.phone) setErrors((p) => ({ ...p, phone: null }));
                         }}
                         placeholder="+91 98765 43210"
-                        className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all ${
-                          errors.phone ? "border-red-400 bg-red-50/50" : "border-gray-200"
+                        className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-800 border rounded-xl text-sm text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all ${
+                          errors.phone ? "border-red-400 bg-red-50/50 dark:bg-red-950/20" : "border-gray-200 dark:border-gray-700"
                         }`}
                       />
                     </div>
                     {errors.phone && (
-                      <p className="mt-1 text-xs text-red-600 flex items-center gap-1 font-medium">
+                      <p className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1 font-medium">
                         <AlertCircle className="w-3 h-3" />
                         {errors.phone}
                       </p>
@@ -556,11 +556,11 @@ export default function Donate() {
                     <div className="flex justify-between items-baseline mb-1.5">
                       <label
                         htmlFor={locationId}
-                        className="block text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                        className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider"
                       >
                         City or Location
                       </label>
-                      <span className="text-[11px] text-gray-400">Optional</span>
+                      <span className="text-[11px] text-gray-400 dark:text-gray-500">Optional</span>
                     </div>
                     <div className="relative">
                       <MapPin className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -570,7 +570,7 @@ export default function Donate() {
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
                         placeholder="e.g. New Delhi, Bengaluru"
-                        className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all"
+                        className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-xl text-sm focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all"
                       />
                     </div>
                   </div>
@@ -578,10 +578,10 @@ export default function Donate() {
               </div>
 
               {/* Section 2: About the Donor & Giving Interests */}
-              <div className="pt-4 border-t border-gray-100">
+              <div className="pt-4 border-t border-gray-100 dark:border-gray-800">
                 <div className="flex items-center gap-2 mb-4">
-                  <Briefcase className="w-4 h-4 text-teal-600" />
-                  <h3 className="text-base font-bold text-gray-900">
+                  <Briefcase className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                  <h3 className="text-base font-bold text-gray-900 dark:text-white">
                     2. About You & Giving Interests
                   </h3>
                 </div>
@@ -591,7 +591,7 @@ export default function Donate() {
                   <div>
                     <label
                       htmlFor={donorTypeId}
-                      className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5"
+                      className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1.5"
                     >
                       Who Are You? <span className="text-red-500">*</span>
                     </label>
@@ -601,10 +601,10 @@ export default function Donate() {
                         id={donorTypeId}
                         value={donorType}
                         onChange={(e) => setDonorType(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all font-medium"
+                        className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-xl text-sm focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all font-medium"
                       >
                         {DONOR_TYPE_OPTIONS.map((opt) => (
-                          <option key={opt} value={opt}>
+                          <option key={opt} value={opt} className="dark:bg-gray-800">
                             {opt}
                           </option>
                         ))}
@@ -617,11 +617,11 @@ export default function Donate() {
                     <div className="flex justify-between items-baseline mb-1.5">
                       <label
                         htmlFor={occupationId}
-                        className="block text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                        className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider"
                       >
                         Occupation or Field
                       </label>
-                      <span className="text-[11px] text-gray-400">Optional</span>
+                      <span className="text-[11px] text-gray-400 dark:text-gray-500">Optional</span>
                     </div>
                     <input
                       id={occupationId}
@@ -629,7 +629,7 @@ export default function Donate() {
                       value={occupation}
                       onChange={(e) => setOccupation(e.target.value)}
                       placeholder="e.g. Teacher, Engineer, Consultant"
-                      className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all"
+                      className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-xl text-sm focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all"
                     />
                   </div>
 
@@ -638,20 +638,20 @@ export default function Donate() {
                     <div className="flex justify-between items-baseline mb-1.5">
                       <label
                         htmlFor={incomeId}
-                        className="block text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                        className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider"
                       >
                         Annual Income Range
                       </label>
-                      <span className="text-[11px] text-gray-400">Optional</span>
+                      <span className="text-[11px] text-gray-400 dark:text-gray-500">Optional</span>
                     </div>
                     <select
                       id={incomeId}
                       value={incomeRange}
                       onChange={(e) => setIncomeRange(e.target.value)}
-                      className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all font-medium text-gray-700"
+                      className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all font-medium text-gray-700 dark:text-gray-200"
                     >
                       {INCOME_RANGE_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt}>
+                        <option key={opt} value={opt} className="dark:bg-gray-800">
                           {opt}
                         </option>
                       ))}
@@ -662,7 +662,7 @@ export default function Donate() {
                   <div>
                     <label
                       htmlFor={interestId}
-                      className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5"
+                      className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1.5"
                     >
                       Donation Interest <span className="text-red-500">*</span>
                     </label>
@@ -670,10 +670,10 @@ export default function Donate() {
                       id={interestId}
                       value={donationInterest}
                       onChange={(e) => setDonationInterest(e.target.value)}
-                      className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all font-medium"
+                      className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all font-medium text-gray-900 dark:text-white"
                     >
                       {DONATION_INTEREST_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt}>
+                        <option key={opt} value={opt} className="dark:bg-gray-800">
                           {opt}
                         </option>
                       ))}
@@ -686,11 +686,11 @@ export default function Donate() {
                   <div className="flex justify-between items-baseline mb-2">
                     <label
                       htmlFor={amountId}
-                      className="block text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                      className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider"
                     >
                       Intended Contribution Amount or Range
                     </label>
-                    <span className="text-[11px] text-gray-400">Approximate</span>
+                    <span className="text-[11px] text-gray-400 dark:text-gray-500">Approximate</span>
                   </div>
 
                   {/* Quick pills */}
@@ -702,8 +702,8 @@ export default function Donate() {
                         onClick={() => setIntendedAmount(preset)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                           intendedAmount === preset
-                            ? "bg-teal-700 text-white shadow-sm"
-                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                            ? "bg-teal-700 dark:bg-teal-600 text-white shadow-sm"
+                            : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                         }`}
                       >
                         {preset}
@@ -717,7 +717,7 @@ export default function Donate() {
                     value={intendedAmount}
                     onChange={(e) => setIntendedAmount(e.target.value)}
                     placeholder="e.g. ₹5,000 one-time, or ₹1,000 monthly, or custom"
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all"
+                    className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-xl text-sm focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all"
                   />
                 </div>
 
@@ -725,7 +725,7 @@ export default function Donate() {
                 <div className="mt-5">
                   <label
                     htmlFor={messageId}
-                    className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5"
+                    className="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-1.5"
                   >
                     Personal Message or Inquiries
                   </label>
@@ -735,16 +735,16 @@ export default function Donate() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Tell us how you would like to help, questions about the cause, or specific trustee inquiries..."
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-teal-500 outline-none transition-all resize-none"
+                    className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-xl text-sm focus:bg-white dark:focus:bg-gray-800 focus:ring-2 focus:ring-teal-500 outline-none transition-all resize-none"
                   />
                 </div>
               </div>
 
               {/* Security & Privacy Explanation Card */}
-              <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 text-xs text-gray-600 flex items-start gap-3">
-                <ShieldCheck className="w-5 h-5 text-teal-700 shrink-0 mt-0.5" />
+              <div className="rounded-2xl bg-slate-50 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700 p-4 text-xs text-gray-600 dark:text-gray-300 flex items-start gap-3">
+                <ShieldCheck className="w-5 h-5 text-teal-700 dark:text-teal-400 shrink-0 mt-0.5" />
                 <div className="leading-relaxed space-y-1">
-                  <p className="font-semibold text-gray-900">
+                  <p className="font-semibold text-gray-900 dark:text-white">
                     Why we collect this information:
                   </p>
                   <p>
@@ -752,7 +752,7 @@ export default function Donate() {
                     strictly to provide personalized impact reports, coordinate 80G tax receipt paperwork,
                     and arrange volunteer or CSR collaborations.
                   </p>
-                  <p className="font-medium text-teal-800">
+                  <p className="font-medium text-teal-800 dark:text-teal-300">
                     We never request bank credentials, PINs, card CVVs, or exact personal balance details.
                   </p>
                 </div>

@@ -56,27 +56,27 @@ function ToastItem({ toast, onDismiss }) {
   return (
     <div
       className={[
-        "flex items-start gap-3 p-4 rounded-xl shadow-lg border pointer-events-auto transition-all duration-200",
+        "flex items-start gap-3 p-4 rounded-xl shadow-xl border pointer-events-auto transition-all duration-200",
         isSuccess
-          ? "bg-white border-teal-100"
-          : "bg-white border-red-100",
+          ? "bg-white dark:bg-gray-800 border-teal-100 dark:border-teal-900/60"
+          : "bg-white dark:bg-gray-800 border-red-100 dark:border-red-900/60",
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2",
       ].join(" ")}
     >
       <span
         className={[
           "flex items-center justify-center w-8 h-8 rounded-lg shrink-0",
-          isSuccess ? "bg-teal-50 text-teal-600" : "bg-red-50 text-red-600",
+          isSuccess ? "bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400" : "bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400",
         ].join(" ")}
       >
         <Icon className="w-4 h-4" />
       </span>
-      <p className="text-sm font-medium text-gray-900 flex-1 pt-1">
+      <p className="text-sm font-medium text-gray-900 dark:text-white flex-1 pt-1">
         {toast.message}
       </p>
       <button
         onClick={onDismiss}
-        className="text-gray-400 hover:text-gray-600 transition-colors shrink-0"
+        className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors shrink-0"
       >
         <X className="w-4 h-4" />
       </button>

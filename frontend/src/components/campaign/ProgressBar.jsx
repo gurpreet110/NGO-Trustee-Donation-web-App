@@ -17,7 +17,7 @@ export default function ProgressBar({ raised = 0, goal = 0, showHeader = false, 
           </span>
         </div>
       )}
-      <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+      <div className="w-full h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
         <div
           role="progressbar"
           aria-valuenow={Math.round(percent)}
