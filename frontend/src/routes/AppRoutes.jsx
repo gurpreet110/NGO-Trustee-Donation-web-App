@@ -17,6 +17,7 @@ import AdminPanel from "@/pages/AdminPanel";
 import ManageCampaigns from "@/pages/ManageCampaigns";
 import ManageTrustees from "@/pages/ManageTrustees";
 import ContactMessages from "@/pages/ContactMessages";
+import DonationInquiries from "@/pages/DonationInquiries";
 import NotFound from "@/pages/NotFound";
 
 // Route guards
@@ -77,6 +78,14 @@ export default function AppRoutes() {
         element={
           <RoleRoute allowedRoles={[ROLES.TRUSTEE, ROLES.ADMIN]}>
             <ContactMessages />
+          </RoleRoute>
+        }
+      />
+      <Route
+        path="/donation-inquiries"
+        element={
+          <RoleRoute allowedRoles={[ROLES.TRUSTEE, ROLES.ADMIN]}>
+            <DonationInquiries />
           </RoleRoute>
         }
       />

@@ -16,7 +16,6 @@ import {
   ArrowRight,
   Info,
   Sparkles,
-  HelpCircle,
 } from "lucide-react";
 import { campaignApi, donationInquiryApi } from "@/api";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";

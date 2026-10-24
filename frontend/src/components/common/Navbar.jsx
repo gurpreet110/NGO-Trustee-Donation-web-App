@@ -11,6 +11,7 @@ import {
   Receipt,
   FolderOpen,
   Inbox,
+  HeartHandshake,
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { ROLES } from "@/utils";
@@ -50,6 +51,11 @@ export default function Navbar() {
       to: "/contact-messages",
       label: "Messages",
       icon: Inbox,
+    });
+    roleLinks.push({
+      to: "/donation-inquiries",
+      label: "Inquiries",
+      icon: HeartHandshake,
     });
   }
   if (role === ROLES.ADMIN) {
