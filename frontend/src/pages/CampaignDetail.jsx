@@ -167,16 +167,13 @@ export default function CampaignDetail() {
               <Button
                 fullWidth
                 size="lg"
-                onClick={() => setModalOpen(true)}
-                disabled={campaign.status === "completed"}
+                onClick={() => navigate(`/donate?campaignId=${campaign.id}`)}
               >
-                {campaign.status === "completed" ? "Goal Reached" : "Donate Now"}
+                Donate / Support Cause
               </Button>
-              {!isAuthenticated && campaign.status !== "completed" && (
-                <p className="text-xs text-gray-400 text-center mt-2">
-                  You'll need to sign in to complete your donation.
-                </p>
-              )}
+              <p className="text-xs text-gray-400 text-center mt-2">
+                Open dedicated donation inquiry form.
+              </p>
             </div>
           </div>
         </div>

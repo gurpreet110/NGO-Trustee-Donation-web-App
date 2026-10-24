@@ -38,6 +38,8 @@ const campaignSchema = new mongoose.Schema(
       ref: "Trustee",
       required: true,
     },
+    impactMetric: { type: String, default: "", trim: true },
+    impactValue: { type: String, default: "", trim: true },
   },
   { timestamps: true }
 );
@@ -70,6 +72,8 @@ export function serializeCampaign(doc) {
     status: obj.status,
     deadline: formatDateOnly(obj.deadline),
     trusteeId,
+    impactMetric: obj.impactMetric || "",
+    impactValue: obj.impactValue || "",
   };
 
   if (trusteePopulated) {

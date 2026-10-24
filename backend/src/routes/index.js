@@ -6,6 +6,7 @@ import donationRoutes from "./donationRoutes.js";
 import statsRoutes from "./statsRoutes.js";
 import trusteeRoutes from "./trusteeRoutes.js";
 import userRoutes from "./userRoutes.js";
+import donationInquiryRoutes from "./donationInquiryRoutes.js";
 
 const router = Router();
 
@@ -16,6 +17,7 @@ router.get("/health", (req, res) => {
 router.use("/auth", authRoutes);
 router.use("/campaigns", campaignRoutes);
 router.use("/donations", donationRoutes);
+router.use("/donation-inquiries", donationInquiryRoutes);
 router.use("/trustees", trusteeRoutes);
 router.use("/users", userRoutes);
 router.use("/contact", contactRoutes);

@@ -5,3 +5,4 @@ export { trusteeApi } from "./trusteeApi";
 export { userApi } from "./userApi";
 export { contactApi } from "./contactApi";
 export { authApi } from "./authApi";
+export { donationInquiryApi } from "./donationInquiryApi";

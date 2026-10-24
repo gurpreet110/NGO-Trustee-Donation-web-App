@@ -30,3 +30,11 @@ export const contactLimiter = rateLimit({
   legacyHeaders: false,
   handler: jsonHandler("Too many contact submissions, please try again later."),
 });
+
+export const donationInquiryLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 15,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: jsonHandler("Too many inquiry submissions from this IP, please try again later."),
+});

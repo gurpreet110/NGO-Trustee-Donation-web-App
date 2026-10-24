@@ -5,6 +5,7 @@ import { hasMaxTwoDecimals } from "../utils/money.js";
 import { isDateOnlyString, parseDateOnly, utcToday } from "../utils/dates.js";
 import { USER_ROLES } from "../models/User.js";
 import { CAMPAIGN_CATEGORIES, CAMPAIGN_STATUSES } from "../models/Campaign.js";
+import { DONOR_TYPES, DONATION_INTERESTS } from "../models/DonationInquiry.js";
 
 function formatZodErrors(error) {
   return error.issues.map((issue) => ({
@@ -154,4 +155,34 @@ export const contactSchema = z.object({
     .trim()
     .min(1, "Message is required")
     .max(2000, "Message cannot exceed 2000 characters"),
+});
+
+const donorTypeEnum = /** @type {[string, ...string[]]} */ (DONOR_TYPES);
+const donationInterestEnum = /** @type {[string, ...string[]]} */ (DONATION_INTERESTS);
+
+const phoneRegex = /^[0-9+\s\-()]{7,25}$/;
+
+export const donationInquirySchema = z.object({
+  campaignId: z.string().trim().min(1, "Preferred campaign is required"),
+  name: z.string().trim().min(1, "Full name is required").max(100, "Name cannot exceed 100 characters"),
+  email: z.string().trim().email("Valid email address is required").transform((v) => v.toLowerCase()),
+  phone: z
+    .string()
+    .trim()
+    .optional()
+    .default("")
+    .refine((val) => !val || phoneRegex.test(val), {
+      message: "Please enter a valid phone number (at least 7 digits)",
+    }),
+  location: z.string().trim().max(100, "Location cannot exceed 100 characters").optional().default(""),
+  donorType: z.enum(donorTypeEnum, {
+    errorMap: () => ({ message: "Please specify who you are" }),
+  }),
+  occupation: z.string().trim().max(100, "Occupation cannot exceed 100 characters").optional().default(""),
+  incomeRange: z.string().trim().max(100).optional().default("Prefer not to say"),
+  donationInterest: z.enum(donationInterestEnum, {
+    errorMap: () => ({ message: "Please select your donation interest" }),
+  }),
+  intendedAmount: z.string().trim().max(100).optional().default(""),
+  message: z.string().trim().max(2000, "Message cannot exceed 2000 characters").optional().default(""),
 });

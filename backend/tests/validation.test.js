@@ -8,6 +8,7 @@ import {
   campaignCreateSchema,
   contactSchema,
   roleUpdateSchema,
+  donationInquirySchema,
 } from "../src/middleware/validate.js";
 
 test("registerSchema accepts valid donor input and lowercases email", () => {
@@ -83,4 +84,57 @@ test("roleUpdateSchema only accepts donor, trustee, admin roles", () => {
 
   assert.equal(valid.success, true);
   assert.equal(invalid.success, false);
+});
+
+test("donationInquirySchema accepts valid inquiry and normalizes email", () => {
+  const parsed = donationInquirySchema.safeParse({
+    campaignId: "507f1f77bcf86cd799439011",
+    name: "Aarav Sharma",
+    email: "AARAV@EXAMPLE.COM",
+    phone: "+91 9876543210",
+    location: "Mumbai",
+    donorType: "Working Professional",
+    occupation: "Software Engineer",
+    incomeRange: "₹10,00,000 - ₹25,00,000",
+    donationInterest: "Monthly support",
+    intendedAmount: "₹5,000 / month",
+    message: "Interested in supporting education initiatives.",
+  });
+
+  assert.equal(parsed.success, true);
+  assert.equal(parsed.data.email, "aarav@example.com");
+  assert.equal(parsed.data.name, "Aarav Sharma");
+  assert.equal(parsed.data.donorType, "Working Professional");
+});
+
+test("donationInquirySchema rejects invalid email, invalid donor type, and missing campaign", () => {
+  const invalidEmail = donationInquirySchema.safeParse({
+    campaignId: "507f1f77bcf86cd799439011",
+    name: "Aarav",
+    email: "bad-email",
+    donorType: "Working Professional",
+    donationInterest: "One-time donation",
+  });
+  assert.equal(invalidEmail.success, false);
+  assert.ok(invalidEmail.error.issues.some((i) => i.path.includes("email")));
+
+  const invalidDonorType = donationInquirySchema.safeParse({
+    campaignId: "507f1f77bcf86cd799439011",
+    name: "Aarav",
+    email: "aarav@example.com",
+    donorType: "Astronaut",
+    donationInterest: "One-time donation",
+  });
+  assert.equal(invalidDonorType.success, false);
+  assert.ok(invalidDonorType.error.issues.some((i) => i.path.includes("donorType")));
+
+  const missingCampaign = donationInquirySchema.safeParse({
+    campaignId: "",
+    name: "Aarav",
+    email: "aarav@example.com",
+    donorType: "Individual",
+    donationInterest: "One-time donation",
+  });
+  assert.equal(missingCampaign.success, false);
+  assert.ok(missingCampaign.error.issues.some((i) => i.path.includes("campaignId")));
 });
