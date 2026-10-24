@@ -20,8 +20,21 @@ app.use(helmet());
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || clientOrigins.includes(origin)) {
-        return callback(null, true);
+      if (!origin) return callback(null, true);
+      try {
+        const url = new URL(origin);
+        if (
+          clientOrigins.includes(origin) ||
+          clientOrigins.includes("*") ||
+          url.hostname.endsWith(".netlify.app") ||
+          url.hostname.endsWith(".vercel.app") ||
+          url.hostname === "localhost" ||
+          url.hostname === "127.0.0.1"
+        ) {
+          return callback(null, true);
+        }
+      } catch {
+        // invalid origin url format
       }
       return callback(new Error("Not allowed by CORS"));
     },
