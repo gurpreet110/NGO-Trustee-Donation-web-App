@@ -1,6 +1,6 @@
 # GiveHope NGO — Verified Trustee Fundraising & Transparent Donations
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://ngo-trustee-donate-web-app.netlify.app/)
+[![Live Demo](https://ngo-trustee-donate-web-app.netlify.app/)
 [![API Status](https://img.shields.io/badge/API%20Status-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://ngo-trustee-donation-web-app.onrender.com)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/gurpreet110/NGO-Trustee-Donation-web-App)
 [![React 18](https://img.shields.io/badge/Frontend-React%2018%20%7C%20Vite%207-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
