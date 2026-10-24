@@ -1,279 +1,277 @@
-# GiveHope — NGO Trustee & Donation Platform
+# GiveHope NGO — Verified Trustee Fundraising & Transparent Donations
 
-A full-stack web application concept for presenting NGO fundraising campaigns, tracking donations, and organizing trustee and administrator workflows. The repository contains a React frontend and a REST API built with Node.js, Express, and MongoDB.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://ngo-trustee-app.netlify.app/)
+[![API Status](https://img.shields.io/badge/API%20Status-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://ngo-trustee-donation-web-app.onrender.com)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/gurpreet110/NGO-Trustee-Donation-web-App)
+[![React 18](https://img.shields.io/badge/Frontend-React%2018%20%7C%20Vite%207-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js%20%7C%20Express-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/Database-MongoDB%20Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 
-> **Project status: Under development.** The backend API is implemented in the source tree, but the frontend's current API modules still read and write in-memory mock data. The UI and API are therefore **not yet fully integrated**. Donation processing on the backend is simulated; this project does not currently process real payments.
+---
 
-## Contents
+## 🌐 Live Production Deployment
 
-- [Features](#features)
-- [Technology stack](#technology-stack)
-- [Repository structure](#repository-structure)
-- [Getting started](#getting-started)
-- [Environment variables](#environment-variables)
-- [Demo data](#demo-data)
-- [API overview](#api-overview)
-- [Roles and access](#roles-and-access)
-- [Important implementation notes](#important-implementation-notes)
-- [Next steps](#next-steps)
+- **Frontend Application:** [https://ngo-trustee-app.netlify.app/](https://ngo-trustee-app.netlify.app/)
+- **Backend REST API:** [https://ngo-trustee-donation-web-app.onrender.com](https://ngo-trustee-donation-web-app.onrender.com)
+- **Source Code Repository:** [https://github.com/gurpreet110/NGO-Trustee-Donation-web-App](https://github.com/gurpreet110/NGO-Trustee-Donation-web-App)
 
-## Features
+---
 
-### Frontend
+## 💡 Why This Project?
 
-- Public home, about, campaigns, campaign details, trustees, and contact pages.
-- Campaign browsing and category filtering.
-- Registration and login screens, plus route guards for authenticated and role-specific screens.
-- Donation modal, donation history, and printable donation receipt UI.
-- Trustee dashboard and campaign-management screens.
-- Admin panel for user-role management.
-- Contact form and contact-message inbox UI.
-- Reusable React components, toast notifications, loading/error states, and responsive styling.
+Non-Governmental Organizations (NGOs) perform critical humanitarian work—from supplying clean drinking water in arid regions to funding children's education and delivering disaster relief. However, trust and accessibility are often the two greatest bottlenecks in modern philanthropy:
+1. Donors often hesitate because they cannot verify where their funds go or who is overseeing the ground operations.
+2. Digital accessibility barriers prevent elderly or visually impaired benefactors from easily engaging with impact reports and campaign updates.
 
-### Backend API
+**GiveHope** was built to solve these fundamental challenges by combining **trustee-vetted campaign verification**, an **accessible native Web Speech Read Aloud feature**, **instant Dark/Light mode**, and a **transparent Donation Inquiry & Coordination workflow**.
 
-- User registration and login with password hashing and JWT access tokens.
-- Role-based authorization for donors, trustees, and admins.
-- Campaign CRUD with trustee ownership checks and campaign-goal status handling.
-- Donation records, receipt numbering, and campaign/user donation totals.
-- Trustee profile management and user-role administration.
-- Contact-message submission and protected inbox retrieval.
-- Dashboard statistics, request validation, rate limiting, security headers, CORS configuration, and centralized error handling.
+---
 
-## Technology stack
+## 🎯 Problem Statement
 
-| Area | Technologies |
-|---|---|
-| Frontend | React 18, Vite, React Router, Tailwind CSS, Axios, Lucide React |
-| Backend | Node.js (18+), Express 4, ES modules |
-| Database | MongoDB with Mongoose |
-| Authentication | JSON Web Tokens (`jsonwebtoken`), `bcryptjs` password hashing |
-| Validation and security | Zod, Helmet, `express-mongo-sanitize`, `express-rate-limit`, CORS |
-| Development tools | npm, ESLint, Git |
+Traditional fundraising platforms and non-profit portals often suffer from:
+- **Lack of Transparency & Accountability:** Donors do not know who verifies each cause or how milestones are monitored.
+- **Accessibility Barriers:** Many NGO sites are cluttered with small text, low-contrast palettes, and zero screen reader/voice assist capabilities for users with visual fatigue or impairments.
+- **Complex Donation Friction:** Users are often forced through complicated registration funnels just to inquire about a major contribution or pledge recurring support.
+- **Fragmented Trustee Workflows:** Trustees frequently lack an intuitive dashboard to review prospective donors, track campaign metrics, and coordinate follow-ups.
 
-## Repository structure
+---
+
+## 🌟 Key Use Cases
+
+### 1. Generous Donors & Public Visitors
+- **Explore Verified Causes:** Browse ongoing initiatives across categories (Water, Education, Emergency Relief, Healthcare).
+- **Listen with One Click (Read Aloud):** Enable native text-to-speech to listen to campaign stories without reading long paragraphs.
+- **Submit Donation Inquiries & Pledges:** Choose specific donation interests (One-time, Monthly, Corporate Partnership) and pledge support through a structured form.
+- **Theme Switcher:** Seamlessly switch between crisp Light Mode and eye-friendly Dark Mode with persistent preferences.
+
+### 2. Board of Trustees & Field Coordinators
+- **Campaign Verification & Oversight:** Review campaign progress, deadlines, and real-time funding statistics.
+- **Donation Inquiries Dashboard:** Access dedicated trustee screens to view incoming donor inquiries, filter by status (`new`, `contacted`, `closed`), and search by donor or campaign.
+- **Accountability & Integrity:** Ensure incoming pledges are triaged securely without directly tampering with verified raised amounts.
+
+### 3. NGO Administrators
+- **Role-Based Access Control:** Secure JWT authentication protecting trustee and administrative views.
+- **Auditable Records:** Centralized MongoDB database for users, campaigns, and inquiries with strict Zod validation and rate limiting.
+
+---
+
+## 🚀 Key Features Highlights
+
+### 🌓 1. Complete Dark Mode & Light Mode
+- Accessible theme switcher in the Navbar with animated Sun and Moon icons.
+- **Zero-Flicker Persistence:** Inline theme loader script in `<head>` ensures zero white flashes on page reload or route changes.
+- Persistent user preference stored in `localStorage` (`givehope-theme`), automatically syncing with system OS color scheme on initial visit.
+- Strict WCAG contrast compliance across all cards, modals, tables, badges, and form controls.
+
+### 🔊 2. Native Website Read Aloud (Web Speech API)
+- Built using the browser's native `window.speechSynthesis` and `SpeechSynthesisUtterance` API—zero external paid API dependencies or third-party tracking.
+- Features **Play, Pause, Resume, and Stop** controls with live soundwave equalizer animation.
+- **Smart Semantic Extraction:** Automatically skips navigation links, footers, buttons, and private form inputs to read only meaningful headings, descriptions, and impact metrics.
+- Prioritizes user-selected text if highlighted.
+- Automatic route cleanup prevents overlapping voices when navigating across pages.
+
+### 📋 3. Donation Inquiry & Pledge Flow
+- Structured multi-field inquiry form capturing Donor Type (Individual, Corporate, Foundation), Occupation, Income Bracket, Intended Amount, and Personal Message.
+- Real-time client-side validation paired with backend Zod schemas.
+- Trustee coordination view with search and quick status switcher (`new` ➔ `contacted` ➔ `closed`).
+
+### ⚡ 4. Premium UI & Micro-interactions
+- Responsive modern design built with Tailwind CSS.
+- Smooth slide-up modals, subtle card hover scale animations, and animated progress bars.
+- `prefers-reduced-motion` CSS overrides for users sensitive to motion.
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technologies Used |
+| :--- | :--- |
+| **Frontend Framework** | React 18, Vite 7, React Router DOM 7 |
+| **Styling & Icons** | Tailwind CSS 3.4, Lucide React Icons |
+| **Accessibility & Audio** | Native HTML5 Web Speech API (`speechSynthesis`), ARIA Roles |
+| **Backend API** | Node.js (v18+ / v24), Express.js 4 (ES Modules) |
+| **Database** | MongoDB Atlas with Mongoose 8 ODM |
+| **Authentication & Security** | JSON Web Tokens (JWT), Bcrypt.js, Helmet, Express Mongo Sanitize, Rate Limiters |
+| **Validation** | Zod (Schema Validation on all endpoints) |
+| **Testing** | Node.js Native Test Runner (`node --test`), 12 Automated Unit & Integration Tests |
+| **Hosting & CI/CD** | **Netlify** (Frontend with SPA redirects) & **Render** (Backend Web Service) |
+
+---
+
+## 📁 Project Folder Structure
 
 ```text
 NGO-Web-App/
-├── frontend/
-│   ├── src/
-│   │   ├── api/              # Current mock-data API modules and Axios client
-│   │   ├── components/       # Shared UI, campaign, donation, and dashboard components
-│   │   ├── context/          # Authentication context
-│   │   ├── hooks/            # Custom hooks
-│   │   ├── pages/            # Public, donor, trustee, and admin screens
-│   │   ├── routes/           # Route definitions and route guards
-│   │   └── utils/            # Formatting, constants, and receipt helpers
-│   ├── index.html
-│   ├── package.json
-│   └── vite.config.js
-└── backend/
-    ├── src/
-    │   ├── config/            # Environment and MongoDB configuration
-    │   ├── controllers/       # Request handlers
-    │   ├── middleware/        # Authentication, authorization, validation, errors, rate limits
-    │   ├── models/            # Mongoose schemas
-    │   ├── routes/             # REST API routes
-    │   ├── seed/               # Demo-data seeding script
-    │   ├── services/            # Payment simulation, receipts, statistics, trustee profiles
-    │   ├── utils/               # Shared helpers
-    │   ├── app.js
-    │   └── server.js
-    └── package.json
+├── .gitignore                      # Protected secrets & build artifacts
+├── netlify.toml                    # Netlify SPA build & redirect configuration
+├── README.md                       # Master project documentation
+│
+├── backend/                        # Express.js REST API
+│   ├── .env.example                # Example environment variables template
+│   ├── package.json                # Dependencies & test scripts
+│   ├── tests/                      # Automated unit & integration tests
+│   │   ├── donationInquiryFlow.test.js
+│   │   └── validation.test.js
+│   └── src/
+│       ├── server.js               # Server entry point
+│       ├── app.js                  # Express app, CORS, security & health check
+│       ├── config/
+│       │   ├── db.js               # MongoDB connection with DNS fallback
+│       │   └── env.js              # Environment variable parsing
+│       ├── controllers/            # Route controllers
+│       │   ├── authController.js
+│       │   ├── campaignController.js
+│       │   ├── donationInquiryController.js
+│       │   └── trusteeController.js
+│       ├── middleware/             # Rate limiters, Zod validation, error handlers
+│       ├── models/                 # Mongoose schemas (Campaign, User, DonationInquiry)
+│       ├── routes/                 # REST endpoints (/api/campaigns, /api/donation-inquiries)
+│       └── seed/                   # Database seeding script
+│
+└── frontend/                       # React 18 + Vite SPA
+    ├── index.html                  # HTML5 entry with early theme flash prevention script
+    ├── package.json                # Dependencies & build scripts
+    ├── tailwind.config.js          # Tailwind CSS with class-based darkMode
+    ├── public/
+    │   └── _redirects              # Netlify client-side SPA routing fallback
+    └── src/
+        ├── App.jsx                 # Theme, Auth, Toast providers & layout
+        ├── index.css               # Design system, keyframes, soundwave & scrollbars
+        ├── main.jsx                # React DOM mount point
+        ├── api/                    # Axios clients & resilient fallbacks
+        │   ├── axios.js            # Auto-normalizing API client (handles /api suffix)
+        │   ├── campaignApi.js
+        │   ├── donationInquiryApi.js
+        │   ├── trusteeApi.js
+        │   └── mockData.js         # Offline fallback data
+        ├── components/             # Reusable UI components
+        │   ├── campaign/           # CampaignCard, ProgressBar
+        │   ├── common/             # Navbar, Footer, Button, Modal, Toast, ReadAloudWidget
+        │   └── donation/           # DonateModal
+        ├── context/                # ThemeContext & AuthContext
+        ├── hooks/                  # useTheme, useAuth, useDocumentTitle
+        ├── pages/                  # Application views
+        │   ├── Home.jsx            # Hero, stats counters, featured campaigns
+        │   ├── About.jsx           # Mission, Vision, and Values
+        │   ├── Campaigns.jsx       # Grid with category filters & search
+        │   ├── CampaignDetail.jsx  # Detailed cause story & sidebar
+        │   ├── Donate.jsx          # Public donation inquiry & pledge form
+        │   ├── DonationInquiries.jsx # Trustee dashboard for review
+        │   ├── Trustees.jsx        # Board of trustees profiles
+        │   ├── Contact.jsx         # Contact inquiry form
+        │   ├── Login.jsx           # Donor / Trustee authentication
+        │   └── Register.jsx        # Account registration
+        └── routes/                 # AppRoutes & protected route guards
 ```
 
-## Getting started
+---
+
+## 🛠️ Step-by-Step Setup & Local Installation
 
 ### Prerequisites
+Make sure you have installed:
+- [Node.js](https://nodejs.org/) (Version 18.x or 20.x+)
+- [Git](https://git-scm.com/)
+- A free [MongoDB Atlas](https://www.mongodb.com/) database cluster or local MongoDB instance
 
-- Node.js 18 or later and npm.
-- A MongoDB database, such as a MongoDB Atlas cluster.
-- Git (if cloning the repository).
+---
 
-### 1. Get the code
-
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/gurpreet110/NGO-Trustee-Donation-web-App.git
 cd NGO-Trustee-Donation-web-App
 ```
 
-### 2. Configure and start the backend
+---
 
-```bash
-cd backend
-npm install
-```
+### 2. Configure & Run Backend Server
 
-Create a local file named `backend/.env` with the variables listed in [Environment variables](#environment-variables). Use your own MongoDB connection string and a long, random JWT secret. Do not copy real credentials into source control.
+1. Open the backend folder and install dependencies:
+   ```bash
+   cd backend
+   npm install
+   ```
 
-Start the API:
+2. Create a `.env` file in the `backend/` directory:
+   ```env
+   PORT=5000
+   NODE_ENV=development
+   MONGODB_URI=your_mongodb_atlas_connection_string
+   JWT_SECRET=your_super_secret_jwt_key_here
+   JWT_EXPIRES_IN=7d
+   CLIENT_URL=http://localhost:5173
+   SEED_PASSWORD=ChangeMe@123
+   ```
 
-```bash
-npm run dev
-```
+3. Seed initial campaigns and trustee demo accounts into your database:
+   ```bash
+   npm run seed
+   ```
 
-The API defaults to `http://localhost:5000/api`. A basic health check is available at `http://localhost:5000/api/health` and should return:
+4. Run automated test suite to verify backend health:
+   ```bash
+   npm test
+   ```
 
-```json
-{ "status": "ok" }
-```
+5. Start the backend development server:
+   ```bash
+   npm run dev
+   ```
+   *The API will start listening at `http://localhost:5000/api`.*
 
-Other backend scripts:
+---
 
-```bash
-npm start      # Start without watch mode
-npm run seed   # DESTRUCTIVE: clears existing application collections, then inserts demo data
-```
+### 3. Configure & Run Frontend Application
 
-**Important:** Only run `npm run seed` against a disposable development database. The seed script deletes existing users, trustees, campaigns, donations, contact messages, and receipt counters before inserting demo records.
+1. Open a new terminal window, navigate to `frontend/`, and install dependencies:
+   ```bash
+   cd ../frontend
+   npm install
+   ```
 
-### 3. Configure and start the frontend
+2. Create a `.env` file in the `frontend/` directory:
+   ```env
+   VITE_API_URL=http://localhost:5000/api
+   ```
 
-In a separate terminal:
+3. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
+   *The frontend application will launch at `http://localhost:5173`.*
 
-```bash
-cd frontend
-npm install
-```
+---
 
-Create `frontend/.env` with:
+## 🚢 Deployment Guide
 
-```dotenv
-VITE_API_URL=http://localhost:5000/api
-# Optional for future payment-gateway work; Razorpay is not currently integrated.
-VITE_RAZORPAY_KEY_ID=
-```
+### Deploy Backend (Render.com)
+1. Link your GitHub repository on [Render](https://render.com/).
+2. Select **Web Service** with:
+   - **Root Directory:** `backend`
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+3. Add Environment Variables: `MONGODB_URI`, `JWT_SECRET`, `NODE_ENV=production`, `CLIENT_URL=*`.
 
-Run the development server:
+### Deploy Frontend (Netlify)
+1. Link your GitHub repository on [Netlify](https://app.netlify.com/).
+2. Specify build parameters:
+   - **Base directory:** `frontend`
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+3. Set Environment Variable:
+   - `VITE_API_URL` = `https://your-backend.onrender.com/api`
 
-```bash
-npm run dev
-```
+---
 
-Vite prints the local URL, typically `http://localhost:5173`.
+## 👨‍💻 Author & Contact
 
-Available frontend scripts:
+**Gurpreet Singh**
+- **GitHub:** [@gurpreet110](https://github.com/gurpreet110)
+- **Email:** [gurpreetsingh75009@gmail.com](mailto:gurpreetsingh75009@gmail.com)
 
-```bash
-npm run dev      # Start Vite development server
-npm run build    # Build the frontend for production
-npm run preview  # Preview a production build locally
-npm run lint     # Run ESLint
-```
+---
 
-## Environment variables
+## 📄 License
 
-### Backend — `backend/.env`
-
-| Variable | Required | Description |
-|---|---|---|
-| `PORT` | No | HTTP port; defaults to `5000`. |
-| `MONGODB_URI` | Yes | MongoDB connection string. |
-| `JWT_SECRET` | Yes | Secret used to sign and verify JWTs. Use a strong random value. |
-| `JWT_EXPIRES_IN` | No | Token expiry accepted by `jsonwebtoken`; defaults to `7d`. |
-| `CLIENT_URL` | No | Allowed frontend origin(s), comma-separated; defaults to `http://localhost:5173`. |
-| `SEED_PASSWORD` | No | Password assigned to all demo accounts by the seed script. Set a private value before seeding. |
-| `NODE_ENV` | No | Set to `production` to suppress detailed server errors in responses. |
-
-Generate a JWT secret locally with Node.js:
-
-```bash
-node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
-```
-
-### Frontend — `frontend/.env`
-
-| Variable | Required for current mock UI | Description |
-|---|---|---|
-| `VITE_API_URL` | No | Intended Axios API base URL, e.g. `http://localhost:5000/api`. Current feature API modules do not yet call the backend. |
-| `VITE_RAZORPAY_KEY_ID` | No | Placeholder for possible future payment integration; it is not currently used by the frontend source. |
-
-Variables prefixed with `VITE_` are exposed to client-side code. Never put private keys, database credentials, or payment secrets in frontend environment variables.
-
-## Demo data
-
-The backend seed script creates demo donor, trustee, and admin accounts and sample campaigns/donations. The password for all seeded accounts is the value of `SEED_PASSWORD` at seed time (the script's fallback is `ChangeMe@123`). Change this to a private development-only password before seeding, and never use demo credentials in production.
-
-The frontend also contains its own mock users, campaigns, donations, trustee records, contact messages, and plaintext demo passwords in `frontend/src/api/mockData.js`. These records are in-memory sample data, not persistent database records.
-
-## API overview
-
-All endpoints are prefixed with `/api`. Protected endpoints require an access token in the header:
-
-```http
-Authorization: Bearer <token>
-```
-
-| Method | Endpoint | Access | Purpose |
-|---|---|---|---|
-| GET | `/health` | Public | Health check |
-| POST | `/auth/register` | Public | Register a donor account |
-| POST | `/auth/login` | Public | Authenticate and return a token/user |
-| GET | `/auth/me` | Authenticated | Return the current user |
-| GET | `/campaigns` | Public | List campaigns; supports status, category, search, and trustee filters |
-| GET | `/campaigns/:id` | Public | Get campaign details |
-| GET | `/campaigns/mine` | Trustee, admin | List campaigns managed by the current trustee (or all for admin) |
-| POST | `/campaigns` | Trustee, admin | Create a campaign |
-| PUT | `/campaigns/:id` | Owning trustee, admin | Update a campaign |
-| DELETE | `/campaigns/:id` | Owning trustee, admin | Delete a campaign if it has no donations |
-| POST | `/donations` | Authenticated | Create a donation record using the simulated payment service |
-| GET | `/donations/my` | Authenticated | List the current user's donations |
-| GET | `/donations` | Trustee, admin | List donations, optionally filtered by campaign |
-| GET | `/donations/:id` | Owner, trustee, admin | Get a donation record |
-| GET | `/trustees` | Public | List trustees |
-| GET | `/trustees/:id` | Public | Get trustee details |
-| POST | `/trustees` | Admin | Create a trustee profile |
-| PUT | `/trustees/:id` | Admin | Update a trustee profile |
-| DELETE | `/trustees/:id` | Admin | Delete a trustee without campaigns |
-| GET | `/users` | Admin | List users |
-| GET | `/users/:id` | Self, admin | Get a user record |
-| PATCH | `/users/:id/role` | Admin | Change a user's role |
-| POST | `/contact` | Public, rate limited | Submit a contact message |
-| GET | `/contact` | Trustee, admin | List contact messages |
-| GET | `/stats` | Trustee, admin | Retrieve fundraising and campaign statistics |
-
-Successful responses generally return the resource or array directly. Errors use a JSON body with a human-readable `message`; validation failures may also include an `errors` array.
-
-### Example: register a donor
-
-```bash
-curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Priya Shah","email":"priya@example.com","password":"UseADevelopmentPassword123"}'
-```
-
-### Example: list campaigns
-
-```bash
-curl http://localhost:5000/api/campaigns
-```
-
-## Roles and access
-
-- **Donor:** Can register/login, browse campaigns, create simulated donations, and view their own donation history.
-- **Trustee:** Can manage their own campaigns and access trustee-level donation/statistics/contact views.
-- **Admin:** Can manage campaigns and trustee profiles, list users, change roles, and access administrative views.
-
-New public registrations are always assigned the `donor` role. Role checks are enforced in backend middleware as well as represented by frontend route guards; frontend guards alone are not a security boundary.
-
-## Important implementation notes
-
-1. **Frontend/backend integration is pending.** `frontend/src/api/authApi.js`, `campaignApi.js`, `donationApi.js`, `trusteeApi.js`, `userApi.js`, and `contactApi.js` currently import and mutate arrays from `mockData.js`. `frontend/src/api/axios.js` defines an Axios client, but those feature modules do not use it yet. Logging in or donating in the current UI therefore does not authenticate against or persist data to the backend.
-2. **Payments are simulated.** `backend/src/services/paymentService.js` generates a simulated transaction ID and marks the donation completed. Razorpay order creation, signature verification, webhook handling, refunds, and live payment confirmation are not implemented. Do not treat a simulated donation as a real financial transaction or tax receipt.
-3. **Receipt UI vs API receipts.** The backend generates receipt numbers for donation records. The current frontend receipt helper generates a printable receipt number from the mock donation ID, so the two flows are not yet aligned.
-4. **Demo seeding is destructive.** `npm run seed` clears the application's collections before inserting fixtures. Use a disposable database only.
-5. **No automated test suite is included** in the current source tree. Run and manually verify the frontend and backend locally before relying on the workflows.
-6. **Environment files must stay private.** Keep `.env` files out of Git. If a real credential has ever been committed or shared outside a trusted local environment, rotate it and issue a replacement.
-
-## Next steps
-
-- Replace mock frontend API modules with Axios calls matching the backend routes and response shapes.
-- Update `AuthContext` to store the JWT, send it with protected requests, and restore/validate sessions with `/auth/me`.
-- Align frontend IDs and trustee ownership with MongoDB ObjectIds returned by the API.
-- Integrate a payment provider in test mode with server-side payment verification before recording a donation as completed.
-- Align printable receipts with the backend-generated receipt number and transaction status.
-- Add API/frontend tests, document deployment configuration, and deploy the frontend and API.
-
-## Author
-
-**Gurpreet Singh** — [GitHub](https://github.com/gurpreet110)
+This project is licensed under the [MIT License](LICENSE). Contributions, issues, and feature requests are welcome!
